@@ -24,7 +24,13 @@ public class AccountResource {
     @PostMapping
     public ResponseEntity<Account> createAccount(@RequestBody Account account) {
         Account createdAccount = accountService.create(account);
-        return new ResponseEntity<>(createdAccount, HttpStatus.CREATED);
+        return new ResponseEntity<>(createdAccount, createdAccount.getCustomerEmail() == null ? HttpStatus.BAD_REQUEST : HttpStatus.CREATED);
+//        if (account.getCustomerEmail() == null || account.getCustomerEmail().isEmpty()) {
+//            return new ResponseEntity<>(createdAccount, HttpStatus.BAD_REQUEST);
+//        } else {
+//            return new ResponseEntity<>(createdAccount, HttpStatus.CREATED);
+//        }
+
     }
 
     @GetMapping("/{customerNumber}")
