@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class JavamicroserviceApplicationTests {
 
     @Test
-    public void createAccount() {
+    void contextLoads() {
     }
 
 }
